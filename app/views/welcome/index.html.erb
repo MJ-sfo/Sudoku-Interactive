@@ -3,11 +3,14 @@
   <img src="/sudoku-logo.png" alt="learning internet" style="width: 300px">
 </div>
 <div>
+  <div>
+    <p></p><p></p><p></p><hr><hr><hr>
+  </div>
   <table class="sudok_tbl">
-  <% @values.in_groups_of(9) do |group| %>
+  <% @arr_81.in_groups_of(9) do |group| %>
   <%= "<tr class='row_#{group}'>" %>
       <% group.each do |cell_value| %>
-        <%="<td class='cell_0'>#{cell_value}</td>" %>
+        <%="<td class='cell_#{cell_value}'></td>" %>
       <% end %>
     <% end %>
 
