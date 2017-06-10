@@ -4,6 +4,17 @@
 </div>
 <div>
   <table class="sudok_tbl">
+  <% @values.in_groups_of(9) do |group| %>
+  <%= "<tr class='row_#{group}'>" %>
+      <% group.each do |cell_value| %>
+        <%="<td class='cell_0'>#{cell_value}</td>" %>
+      <% end %>
+    <% end %>
+
+  </table>
+</div>
+<div>
+  <table class="sudok_tbl">
     <tr class="row_1">
       <td class="cell_0"></td><td class="cell_1"></td><td class="cell_2"></td><td class="cell_3"></td><td class="cell_4"></td><td class="cell_5"></td><td class="cell_6"></td><td class="cell_7"></td><td class="cell_8"></td>
     </tr>
