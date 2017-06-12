@@ -6,11 +6,25 @@
 <div>
   <table class="sudok_tbl">
   <% counter=0 %>
-  <% @values.in_groups_of(9) do |group| %>
+  <%  @values.in_groups_of(9) do |group| %>
   <% counter = counter+1 %>
     <tr class="<%= 'row_' + counter.to_s %>">
   <% group.each_with_index do |value, index| %>
-        <td class="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" ><%= value %></td>
+        <td class="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" > <%= value %>
+
+          <select class="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" name="new_num">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+           <select/>
+
+        </td>
     <% end %>
     </tr>
   <% end %>
