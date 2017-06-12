@@ -3,9 +3,7 @@
   <img src="/sudoku-logo.png" alt="learning internet" style="width: 300px">
 </div>
 <div>
-  <div>
-    <p></p><p></p><p></p><hr><hr><hr>
-  </div>
+  <% if false #-----\/----\/----\/---- %>
   <table class="sudok_tbl">
   <% @arr_81.in_groups_of(9) do |group| %>
   <%= "<tr class='row_#{group}'>" %>
@@ -15,6 +13,10 @@
     <% end %>
 
   </table>
+   <% end #____/\____/\____/\____%>
+  <div>
+  <p></p><p></p><p></p><hr><hr><hr>
+  </div>
 </div>
 <div>
   <table class="sudok_tbl">
@@ -37,11 +39,14 @@
       <td class="cell_45"></td><td class="cell_46"></td><td class="cell_47"></td><td class="cell_48"></td><td class="cell_49"></td><td class="cell_50"></td><td class="cell_51"></td><td class="cell_52"></td><td class="cell_53"></td>
     </tr>
     <tr class="row_7">
-      <td class="cell_38"></td><td class="cell_39"></td><td class="cell_40"></td><td class="cell_41"></td><td class="cell_42"></td><td class="cell_43"></td><td class="cell_44"></td><td class="cell_45"></td><td class="cell_46"></td>
+      <td class="cell_54"></td><td class="cell_55"></td><td class="cell_56"></td><td class="cell_57"></td><td class="cell_58"></td><td class="cell_59"></td><td class="cell_60"></td><td class="cell_61"></td><td class="cell_62"></td>
     </tr>
-                  <tr class="row_1">
-                    <td class="cell0"></td><td class="cell_1"></td><td class="cell_2"></td><td class="cell_3"></td><td class="cell_4"></td><td class="cell_5"></td><td class="cell_6"></td><td class="cell_7"></td><td class="cell_8"></td>
-                  </tr>
+    <tr class="row_8">
+      <td class="cel_63"></td><td class="cell_64"></td><td class="cell_65"></td><td class="cell_66"></td><td class="cell_67"></td><td class="cell_68"></td><td class="cell_69"></td><td class="cell_70"></td><td class="cell_71"></td>
+    </tr>
+    <tr class="row_9">
+      <td class="cel_72"></td><td class="cell_73"></td><td class="cell_74"></td><td class="cell_75"></td><td class="cell_76"></td><td class="cell_77"></td><td class="cell_78"></td><td class="cell_79"></td><td class="cell_80"></td>
+    </tr>
   </table>
 </div>
 

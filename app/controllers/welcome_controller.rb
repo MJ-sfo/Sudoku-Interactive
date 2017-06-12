@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
     end
     def arr_81
       @arr_81 =[]
-      81.times {|i| @arr_81.push(i.to_i}
+      81.times {|i| @arr_81.push(i.to_s) }
       puts @arr_81
     end
 
