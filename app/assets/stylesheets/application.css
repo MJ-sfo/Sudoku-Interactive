@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+ .cell_#{index} {
+   background: yellow;
+   border: pink
+ }
+
+ .cell_15 {
+   background: green;
+   border: orange
+ }

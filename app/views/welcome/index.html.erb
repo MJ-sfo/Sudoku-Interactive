@@ -5,10 +5,12 @@
 <div><p> <%= @values.inspect %></p></div>
 <div>
   <table class="sudok_tbl">
+  <% counter=0 %>
   <% @values.in_groups_of(9) do |group| %>
-    <tr>
+  <% counter = counter+1 %>
+    <tr class="<%= 'row_' + counter.to_s %>">
   <% group.each_with_index do |value, index| %>
-        <td><%= value %></td>
+        <td class="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" ><%= value %></td>
     <% end %>
     </tr>
   <% end %>
