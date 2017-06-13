@@ -10,8 +10,8 @@
   <% counter = counter+1 %>
     <tr class="<%= 'row_' + counter.to_s %>">
   <% group.each_with_index do |value, index| %>
-        <td class="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" > <%= value %>
-
+        <td class="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" >
+          <% if value.to_s.include?('-') %>
           <select class="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" name="new_num">
             <option value=1>1</option>
             <option value=2>2</option>
@@ -23,7 +23,9 @@
             <option value=8>8</option>
             <option value=9>9</option>
            <select/>
-
+           <% else %>
+           <%= value %>
+           <% end %>
         </td>
     <% end %>
     </tr>
