@@ -20,5 +20,10 @@ $( document ).on('turbolinks:load', function() {
   $('.box').click( function(event) {
     var id = event.target.id;
     console.log('id = ' + id);
+    index = Number(id.substring(5));
+    console.log("index is: " + index)
+    replace = find_row(index);
+    // replace = possible_numbers(string_starting_numbers[index], index)
+    console.log(replace);
   });   // $(".box").click(
 });   //  $( document ).on
