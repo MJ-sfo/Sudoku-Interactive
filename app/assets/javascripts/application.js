@@ -13,3 +13,12 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
+console.log("js is showing")
+$( document ).on('turbolinks:load', function() {
+  // console.log('Jquery is working')
+
+  $('.box').click( function(event) {
+    var id = event.target.id;
+    console.log('id = ' + id);
+  });   // $(".box").click(
+});   //  $( document ).on
