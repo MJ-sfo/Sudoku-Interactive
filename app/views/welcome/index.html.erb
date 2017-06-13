@@ -2,7 +2,7 @@
   <h1>Sudoku Interative !</h1>
   <img src="/sudoku-logo.png" alt="learning internet" style="width: 300px">
 </div>
-<div><p> <%= @values.inspect %></p></div>
+<div><p id="numbs_arr"> <%= @values  %></p></div>
 <div>
   <table class="sudok_tbl">
   <% counter=0 %>
@@ -15,7 +15,7 @@
           <%= value %>
            <% else %>
            choose
-           <select class="<%= 'menu_' + ((counter-1)*9 + index).to_s %> drop_down_menu" name="new_num">
+           <select class="<%= 'menu_' + ((counter-1)*9 + index).to_s %> drop_down_menu" name="new_num" style="display: none">
            <option disabled selected value>???</option>
            <option value=1>1</option>
            <option value=2>2</option>

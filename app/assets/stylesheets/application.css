@@ -21,6 +21,7 @@
  }
 
 .drop_down_menu {
-  border-color: pink;
-  display: none
+  /*display: none;*/
+  /* default vaue of drop down list is not display */
+  border-color: pink
 }

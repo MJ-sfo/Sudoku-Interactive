@@ -1,14 +1,19 @@
 class WelcomeController < ApplicationController
 
-    attr_reader :arr_81, :values, :integers
+    attr_reader :values
     def index
       string_starting_numbers = File.readlines("#{Rails.root}/config/sudoku_puzzles.txt")[0]
       @values = create_numbers(string_starting_numbers)[0..80]  # need [0..80] or adds 0 to end
       render('index')
       @integers = [1,2,3,4,5,6,7,8,9]
+      # @cell_numb_arr = string_starting_numbers
     end
 
-
+    def render_read
+      # puts possible_numbers(@cell_numb_arr, 1)
+      interger_arr = params[:arr].map {|i| i.to_i if i >= "1" && i<= "9"}
+      p possible_numbers(interger_arr,params[:index].to_i)
+    end
 
     def possible_numbers(arr, index)
       row = find_row(index)
@@ -49,7 +54,7 @@ class WelcomeController < ApplicationController
       new_arr = (arr[57..59] + arr[66..68] + arr[75..77]) if square == 8
       new_arr = (arr[60..62] + arr[69..71] + arr[78..80]) if square == 9
 
-      new_arr.delete_if {|x| x == "-" }
+      new_arr.delete_if {|x| x == "-" or  x == '\"-\"'}
       new_arr
     end
 
