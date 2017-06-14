@@ -2,7 +2,11 @@ class WelcomeController < ApplicationController
 
     attr_reader :values
     def index
-      string_starting_numbers = File.readlines("#{Rails.root}/config/sudoku_puzzles.txt")[0]
+      # string_starting_numbers = File.readlines("#{Rails.root}/config/sudoku_puzzles.txt")[0..8].sample
+      a = Puzzle.where(level:1)
+      sample_object = a.sample
+      string_id = sample_object[:id]
+      string_starting_numbers = sample_object[:puzzle]
       @values = create_numbers(string_starting_numbers)[0..80]  # need [0..80] or adds 0 to end
       render('index')
       @integers = [1,2,3,4,5,6,7,8,9]

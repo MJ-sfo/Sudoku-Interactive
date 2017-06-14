@@ -2,7 +2,8 @@
   <h1>Sudoku Interative !</h1>
   <img src="/sudoku-logo.png" alt="learning internet" style="width: 300px">
 </div>
-<div><p id="numbs_arr"> <%= @values  %></p></div>
+  <p></p>
+<div><p id="numbs_arr" style="display: none"> <%= @values  %></p></div>
 <div>
   <table class="sudok_tbl">
   <% counter=0 %>
@@ -12,20 +13,19 @@
   <% group.each_with_index do |value, index| %>
         <td id="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" class = "box">
           <% if value.is_a? Integer %>
-          <%= value %>
+            <%= value %>
            <% else %>
-           choose
-           <select id="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" class="drop_down_menu" style="display: none">
-           <option disabled selected value>???</option>
-           </select>
+             choose
+             <select id="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" class="drop_down_menu" style="display: none">
+             <option disabled selected value>???</option>
+             </select>
            <% end %>
         </td>
     <% end %>
     </tr>
   <% end %>
   </table>
-  <div>
-  <p></p><p></p><p></p><hr><hr><hr>
+  <div><p></p><p></p><hr><hr><hr>
   </div>
 </div>
 

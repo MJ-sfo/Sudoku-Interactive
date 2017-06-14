@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  choices: 1
+  win: false
+
+two:
+  choices: 1
+  win: false
