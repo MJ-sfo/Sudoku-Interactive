@@ -15,19 +15,22 @@
 //= require_tree .
 console.log("js is showing")
 $( document ).on('turbolinks:load', function() {
+  var arr_store_cell_numbs = JSON.parse($( "#numbs_arr").text());
+  console.log("arr_store_cell_numbs is a: " + jQuery.type( arr_store_cell_numbs ));
 
   $('.box').one("click", function(event) {
     var id = event.target.id;
     index = Number(id.substring(5));
-    console.log('id = ' + id + ", and index is: " + index)
+    // console.log('id = ' + id + ", and index is: " + index)
     // console.log(jQuery.type( index ))
     var menu_id = 'menu_' + parseInt(index)
-    console.log('menu = ' + menu_id);
+    // console.log('menu = ' + menu_id);
     $.ajax({
       url: "/welcome/find_choices",
       type: 'GET',
       data: {
-        arr: JSON.parse($( "#numbs_arr").text()),
+        arr: arr_store_cell_numbs,
+        // arr: JSON.parse($( "#numbs_arr").text()),
         index: index
       },
       success: function(response) {
@@ -37,21 +40,29 @@ $( document ).on('turbolinks:load', function() {
       },  //   success: function(
     });   //   $.ajax({
     // $('#' + menu_id).toggle();
+
+    // finished ajax call, but stil within box-one-click
     $('#' + menu_id).show();
+    // $('#' + menu_id).bind('click', function() {
     $(function() {
+        // ('#' + menu_id).change.bind('click', function(resp) {
         $('#' + menu_id).change(function(resp) {
             var choice = $( "#" + menu_id + " option:selected" ).text();
             console.log('menue has changed with ' + choice);
             // $('#' + numbs_arr)[index] = choice;
-            var arr_make_tbl = $('#numbs_arr')[0].innerHTML;
-            var add_to_arr = JSON.parse(  arr_make_tbl)
-            add_to_arr[index] = Number(choice);
-            console.log(add_to_arr);
-            console.log(jQuery.type( add_to_arr ));
-            arr_make_tbl = add_to_arr;
-            console.log(arr_make_tbl);
-            console.log(jQuery.type( arr_make_tbl ));
+
+            arr_store_cell_numbs[index] = Number(choice);
+            console.log(arr_store_cell_numbs);
+            // var arr_make_tbl = $('#numbs_arr')[0].innerHTML;
+            // var add_to_arr = JSON.parse(  arr_make_tbl)
+            // add_to_arr[index] = Number(choice);
+            // console.log(add_to_arr);
+            // console.log(jQuery.type( add_to_arr ));
+            // arr_make_tbl = add_to_arr;
+            // console.log(arr_make_tbl);
+            // console.log(jQuery.type( arr_make_tbl ));
         });  //  $('#' + menu_id).change
+      //  $(this).unbind('click');
     });   //  $(function()
   });   // $(".box").click(
 });   //  $( document ).on
