@@ -43,13 +43,14 @@ $( document ).on('turbolinks:load', function() {
             var choice = $( "#" + menu_id + " option:selected" ).text();
             console.log('menue has changed with ' + choice);
             // $('#' + numbs_arr)[index] = choice;
-            var add_to_arr = JSON.parse(  $('#numbs_arr')[0].innerHTML )
+            var arr_make_tbl = $('#numbs_arr')[0].innerHTML;
+            var add_to_arr = JSON.parse(  arr_make_tbl)
             add_to_arr[index] = Number(choice);
             console.log(add_to_arr);
             console.log(jQuery.type( add_to_arr ));
-            console.log(jQuery.type( $('#numbs_arr') ));
-            $('#numbs_arr')[0].innerHTML = add_to_arr;
-            console.log($('#numbs_arr')[0].innerHTML);
+            arr_make_tbl = add_to_arr;
+            console.log(arr_make_tbl);
+            console.log(jQuery.type( arr_make_tbl ));
         });  //  $('#' + menu_id).change
     });   //  $(function()
   });   // $(".box").click(
