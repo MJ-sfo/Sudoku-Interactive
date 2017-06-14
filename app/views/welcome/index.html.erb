@@ -15,7 +15,7 @@
           <%= value %>
            <% else %>
            choose
-           <select class="<%= 'menu_' + ((counter-1)*9 + index).to_s %> drop_down_menu" name="new_num" style="display: none">
+           <select id="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" class="drop_down_menu" style="display: none">
            <option disabled selected value>???</option>
            <option value=1>1</option>
            <option value=2>2</option>

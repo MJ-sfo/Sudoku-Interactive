@@ -9,10 +9,15 @@ class WelcomeController < ApplicationController
       # @cell_numb_arr = string_starting_numbers
     end
 
-    def render_read
-      # puts possible_numbers(@cell_numb_arr, 1)
+    def find_choises
       interger_arr = params[:arr].map {|i| i.to_i if i >= "1" && i<= "9"}
-      p possible_numbers(interger_arr,params[:index].to_i)
+      results_to_return = possible_numbers(interger_arr,params[:index].to_i)
+      # respond_to do |format|
+      #   format.html
+      #   format.json {render json: results_to_return}
+      # end
+      # respond_with results_to_return
+      render json: results_to_return
     end
 
     def possible_numbers(arr, index)

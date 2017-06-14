@@ -19,26 +19,33 @@ $( document ).on('turbolinks:load', function() {
 
   $('.box').click( function(event) {
     var id = event.target.id;
-    // console.log('id = ' + id);
     index = Number(id.substring(5));
     console.log('id = ' + id + ", and index is: " + index)
-    console.log(jQuery.type( index ))
+    // console.log(jQuery.type( index ))
 
-    var menu_class = 'menu_' + parseInt(index)
-    console.log('menu = ' + menu_class);
-    $('.menu_class').css("display", "block");  // these don't work!
-    // $('.menu_class').show();  // these don't work!
-    // $('#menu_class').toggle();  // these don't work!
+    var menu_id = 'menu_' + parseInt(index)
+    console.log('menu = ' + menu_id);
+    $('#' + menu_id).toggle();  // these don't work!
+    console.log($('#menu_4'))
+    // console.log($('#menu_id').val())
     // replace = find_row(index);
     // replace = possible_numbers(string_starting_numbers[index], index)
     // console.log(replace);
-    console.log(JSON.parse($( "#numbs_arr").text()))
+    // console.log(JSON.parse($( "#numbs_arr").text()))
     $.ajax({
-      url: "/welcome/render_read",
+      url: "/welcome/find_choises",
       type: 'GET',
       data: {
         arr: JSON.parse($( "#numbs_arr").text()),
         index: index
+      },
+      // dataType: "json",
+      // async: false,
+      success: function(response) {
+      // success: function(){var dave response.sucess} {
+          console.log("ajax success");
+          console.log(response);
+          console.log(jQuery.type( response ));
       }
     });
   });   // $(".box").click(
