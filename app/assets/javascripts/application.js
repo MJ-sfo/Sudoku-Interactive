@@ -17,7 +17,7 @@ console.log("js is showing")
 $( document ).on('turbolinks:load', function() {
   // console.log('Jquery is working')
 
-  $('.box').click( function(event) {
+  $('.box').one("click", function(event) {
     var id = event.target.id;
     index = Number(id.substring(5));
     console.log('id = ' + id + ", and index is: " + index)
@@ -25,8 +25,7 @@ $( document ).on('turbolinks:load', function() {
 
     var menu_id = 'menu_' + parseInt(index)
     console.log('menu = ' + menu_id);
-    $('#' + menu_id).toggle();  // these don't work!
-    console.log($('#menu_4'))
+    // console.log($('#menu_4'))
     // console.log($('#menu_id').val())
     // replace = find_row(index);
     // replace = possible_numbers(string_starting_numbers[index], index)
@@ -43,10 +42,15 @@ $( document ).on('turbolinks:load', function() {
       // async: false,
       success: function(response) {
       // success: function(){var dave response.sucess} {
-          console.log("ajax success");
-          console.log(response);
-          console.log(jQuery.type( response ));
-      }
-    });
+          // console.log("ajax success");
+          // console.log(response);
+          // console.log(jQuery.type( response ));
+          response.forEach(function(item){
+            $('#' + menu_id).append($("<option></option>").attr("value", item).text(item));
+          })
+      },  //   success: function(
+    });   //   $.ajax({
+    // $('#' + menu_id).toggle();
+    $('#' + menu_id).show();
   });   // $(".box").click(
 });   //  $( document ).on
