@@ -40,15 +40,17 @@ $( document ).on('turbolinks:load', function() {
     $('#' + menu_id).show();
     $(function() {
         $('#' + menu_id).change(function(resp) {
-            console.log('menue has changed with');
             var choice = $( "#" + menu_id + " option:selected" ).text();
-            console.log(choice);
+            console.log('menue has changed with ' + choice);
             // $('#' + numbs_arr)[index] = choice;
-            var dave = JSON.parse( $('#numbs_arr')[0].innerHTML )
-            dave[index] = Number(choice);
-            console.log(dave);
-            console.log(jQuery.type( dave ));
-        });
-    });
+            var add_to_arr = JSON.parse(  $('#numbs_arr')[0].innerHTML )
+            add_to_arr[index] = Number(choice);
+            console.log(add_to_arr);
+            console.log(jQuery.type( add_to_arr ));
+            console.log(jQuery.type( $('#numbs_arr') ));
+            $('#numbs_arr')[0].innerHTML = add_to_arr;
+            console.log($('#numbs_arr')[0].innerHTML);
+        });  //  $('#' + menu_id).change
+    });   //  $(function()
   });   // $(".box").click(
 });   //  $( document ).on
