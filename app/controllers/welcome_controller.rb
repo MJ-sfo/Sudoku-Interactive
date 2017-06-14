@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
       # @cell_numb_arr = string_starting_numbers
     end
 
-    def find_choises
+    def find_choices
       interger_arr = params[:arr].map {|i| i.to_i if i >= "1" && i<= "9"}
       results_to_return = possible_numbers(interger_arr,params[:index].to_i)
       # respond_to do |format|
