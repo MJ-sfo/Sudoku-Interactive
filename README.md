@@ -36,9 +36,9 @@ end
 This ruby function parses the incoming data, sends information to second function possible_numbers, and returns result to JQuery
 
 Future Features:
-For rare case of user solving puzzle, app needs to recognise a win and congratulate user, save win data to DB
-allow user to change choise on each cell
-highlight different cells - cells pre filled, and completed rows/columns/3x3 boxes
-user to choose different level of difficulty
-more style, such as animation
-hide word "choose" once cell shows menu
+- For rare case of user solving puzzle, app needs to recognise a win and congratulate user, and save win data to DB
+- allow user to change choise on each cell
+- highlight different cells - cells pre filled, and completed rows/columns/3x3 boxes
+- user to choose different level of difficulty
+- more style, such as animation
+- hide word "choose" once cell shows menu
