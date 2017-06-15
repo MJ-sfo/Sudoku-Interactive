@@ -22,12 +22,16 @@ $( document ).on('turbolinks:load', function() {
   var playing_level = Number(JSON.parse($( "#level_id").text()));
   // console.log("playing_level is a: " + jQuery.type( playing_level ));
   var puzzle_id = Number(JSON.parse($( "#puzzle").text()));
+    // console.log(puzzle_id);
+    // console.log(jQuery.type( puzzle_id ));
 
   // info will need to send to db:
   var count = 0;
   var did_i_win = false;
 
   $('.box').one("click", function(event) {
+    // var newText = $(this).text().replace("/def/g", "");
+    // $(this).text(newText);
     var id = event.target.id;
     index = Number(id.substring(5));
     // console.log(jQuery.type( index ))
@@ -44,15 +48,22 @@ $( document ).on('turbolinks:load', function() {
       success: function(response) {
         // if nothing in array (response) , game over
         if (response.length < 1) {
+          $.ajax({
+            url: "/welcome/game_end_stats",
+            type: 'POST',
+            data: {
+              win: did_i_win,
+              choices: count,
+              puzzle_id: puzzle_id
+            },
+          });  //  $.ajax({
           window.alert("Sorry, end of possibilities.  Game over after" + parseInt(count) + " tries.");
-        }
+        }  //  if (response.length
         else {
           response.forEach(function(item){
             $('#' + menu_id).append($("<option></option>").attr("value", item).text(item));
           })   //  response.forEach
         }
-
-
       },  //   success: function(
     });   //   $.ajax({
     // $('#' + menu_id).toggle();

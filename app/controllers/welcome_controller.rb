@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  respond_to :json, :html
 
     # attr_reader :values
     def index
@@ -16,7 +17,12 @@ class WelcomeController < ApplicationController
 
     def game_end_stats
       # puts params
+      # game_numb=params[:puzzle_id]
+      # p "the game number is:"
+      # p game_numb
       Attempt.create(game_stats_params)
+
+      # Attempt.create(game_stats_params(params))
     end
 
     def find_choices
@@ -101,10 +107,11 @@ class WelcomeController < ApplicationController
       new_arr
     end
 
-//
+
 private
 def game_stats_params
-  params.require(:attempt).permit(:id, :choices, :win)
+  params.require(:attempts).permit( :choices, :win)
+
 end
 
 end
