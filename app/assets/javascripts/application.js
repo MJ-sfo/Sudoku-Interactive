@@ -57,7 +57,8 @@ $( document ).on('turbolinks:load', function() {
               puzzle_id: puzzle_id
             },
           });  //  $.ajax({
-          window.alert("Sorry, end of possibilities.  Game over after" + parseInt(count) + " tries.");
+          $(".final_statement").show().text("Sorry, end of possibilities.  Game over after " + parseInt(count) + " tries.");
+          // window.alert("Sorry, end of possibilities.  Game over after" + parseInt(count) + " tries.");
         }  //  if (response.length
         else {
           response.forEach(function(item){
@@ -92,4 +93,8 @@ $( document ).on('turbolinks:load', function() {
       //  $(this).unbind('click');
     });   //  $(function()
   });   // $(".box").click(
+
+  $('.new_game').click(function() {
+      location.reload();
+  });
 });   //  $( document ).on

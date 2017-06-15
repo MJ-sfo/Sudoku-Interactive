@@ -110,7 +110,7 @@ class WelcomeController < ApplicationController
 
 private
 def game_stats_params
-  params.require(:attempts).permit( :choices, :win)
+  params.require(:attempts).permit( :choices, :win, :puzzle_id)
 
 end
 
