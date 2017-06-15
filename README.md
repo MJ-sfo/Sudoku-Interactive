@@ -13,10 +13,10 @@ heroku open
 In process of creating this app, discovered that game apps are usually done in node.js, because most of the algorithms are done on the front end - that is, rarely needing to communicate with server.  I created a hybrid-app with JQuery frontend collecting and distributing data, creating the initial board, pub making ajax calls to ruby functions in the rails controller file to perform calculations. The controller also communicates directly with DB.
 
 For the wireframe of this app, please see:
-./assets/images/sudoku_wireframe.jpg
+app/assets/images/sudoku_wireframe.jpg
 
 For the Entity Relationship Diagram, please see:
-./assets/images/ERD_Sudoku.jpg
+app/assets/images/ERD_Sudoku.jpg
 
 
 code I am proud of:
