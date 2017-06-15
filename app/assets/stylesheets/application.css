@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+
+ .cell_15 {
+   background: green;
+   border: orange
+ }
+
+.drop_down_menu {
+  /*display: none;*/
+  /* default vaue of drop down list is not display */
+  border-color: pink
+}

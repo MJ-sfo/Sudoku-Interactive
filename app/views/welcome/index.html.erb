@@ -1,0 +1,45 @@
+<div>
+  <h1>Sudoku Interative !</h1>
+  <img src="/sudoku-logo.png" alt="learning internet" style="width: 300px">
+</div>
+  <p></p>
+<div>
+  <p id="numbs_arr" style="display: none"> <%= @values  %></p>
+  <p id="puzzle" style="display: none"> <%= @puzzle_id   %></p>
+  <p id="level_id" style="display: none"> <%= @level  %></p>
+</div>
+<div>
+  <table class="sudok_tbl">
+  <% counter=0 %>
+  <%  @values.in_groups_of(9) do |group| %>
+  <% counter = counter+1 %>
+    <tr class="<%= 'row_' + counter.to_s %>">
+  <% group.each_with_index do |value, index| %>
+        <td id="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" class = "box">
+          <% if value.is_a? Integer %>
+            <%= value %>
+           <% else %>
+             choose
+             <select id="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" class="drop_down_menu" style="display: none">
+             <option disabled selected value>???</option>
+             </select>
+           <% end %>
+        </td>
+    <% end %>
+    </tr>
+  <% end %>
+  </table>
+  <div><p></p><hr><hr>
+
+  <p class="final_statement" style="display: none"></p>
+  <hr>
+  </div>
+</div>
+
+
+<div>
+  <button class="new_game">Start new game!</button>
+</div>
+
+<div>
+</div>
