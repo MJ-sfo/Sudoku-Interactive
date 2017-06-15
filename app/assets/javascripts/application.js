@@ -20,29 +20,22 @@ $( document ).on('turbolinks:load', function() {
   var arr_store_cell_numbs = JSON.parse($( "#numbs_arr").text());
   // console.log("arr_store_cell_numbs is a: " + jQuery.type( arr_store_cell_numbs ));
   var playing_level = Number(JSON.parse($( "#level_id").text()));
-  // console.log("playing_level is a: " + jQuery.type( playing_level ));
   var puzzle_id = Number(JSON.parse($( "#puzzle").text()));
-    // console.log(puzzle_id);
-    // console.log(jQuery.type( puzzle_id ));
 
   // info will need to send to db:
   var count = 0;
   var did_i_win = false;
 
   $('.box').one("click", function(event) {
-    // var newText = $(this).text().replace("/def/g", "");
-    // $(this).text(newText);
     var id = event.target.id;
     index = Number(id.substring(5));
     // console.log(jQuery.type( index ))
     var menu_id = 'menu_' + parseInt(index)
-    // console.log('menu = ' + menu_id);
     $.ajax({
       url: "/welcome/find_choices",
       type: 'GET',
       data: {
         arr: arr_store_cell_numbs,
-        // arr: JSON.parse($( "#numbs_arr").text()),
         index: index
       },
       success: function(response) {
@@ -58,7 +51,6 @@ $( document ).on('turbolinks:load', function() {
             },
           });  //  $.ajax({
           $(".final_statement").show().text("Sorry, end of possibilities.  Game over after " + parseInt(count) + " tries.");
-          // window.alert("Sorry, end of possibilities.  Game over after" + parseInt(count) + " tries.");
         }  //  if (response.length
         else {
           response.forEach(function(item){

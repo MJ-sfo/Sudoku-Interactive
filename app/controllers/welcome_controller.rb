@@ -12,14 +12,11 @@ class WelcomeController < ApplicationController
       @values = create_numbers(string_starting_numbers)[0..80]  # need [0..80] or adds 0 to end
       render('index')
       @integers = [1,2,3,4,5,6,7,8,9]
-      # @cell_numb_arr = string_starting_numbers
     end
 
     def game_end_stats
       # puts params
       Attempt.create(game_stats_params)
-
-      # Attempt.create(game_stats_params(params))
     end
 
     def find_choices
@@ -105,12 +102,11 @@ class WelcomeController < ApplicationController
     end
 
 
-private
-def game_stats_params
-  # params.require(:attempts).permit( :choices, :win, :puzzle_id)
-  params.permit( :choices, :win, :puzzle_id)
-  # 'whitelist' means listing acceptable fields of data
-
-end
+  private
+  def game_stats_params
+    # params.require(:attempts).permit( :choices, :win, :puzzle_id)
+    params.permit( :choices, :win, :puzzle_id)
+    # 'whitelist' means listing acceptable fields of data
+  end
 
 end
