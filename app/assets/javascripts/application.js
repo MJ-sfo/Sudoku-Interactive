@@ -30,7 +30,6 @@ $( document ).on('turbolinks:load', function() {
   $('.box').one("click", function(event) {
     var id = event.target.id;
     index = Number(id.substring(5));
-    // console.log('id = ' + id + ", and index is: " + index)
     // console.log(jQuery.type( index ))
     var menu_id = 'menu_' + parseInt(index)
     // console.log('menu = ' + menu_id);
@@ -43,25 +42,33 @@ $( document ).on('turbolinks:load', function() {
         index: index
       },
       success: function(response) {
+        // if nothing in array (response) , game over
+        if (response.length < 1) {
+          window.alert("Sorry, end of possibilities.  Game over after" + parseInt(count) + " tries.");
+        }
+        else {
           response.forEach(function(item){
             $('#' + menu_id).append($("<option></option>").attr("value", item).text(item));
-          })
+          })   //  response.forEach
+        }
+
+
       },  //   success: function(
     });   //   $.ajax({
     // $('#' + menu_id).toggle();
 
     // finished ajax call, but stil within box-one-click
     $('#' + menu_id).show();
-    // $('#' + menu_id).bind('click', function() {
     $(function() {
-        // ('#' + menu_id).change.bind('click', function(resp) {
         $('#' + menu_id).change(function(resp) {
             var choice = $( "#" + menu_id + " option:selected" ).text();
             console.log('menue has changed with ' + choice);
             // $('#' + numbs_arr)[index] = choice;
 
             arr_store_cell_numbs[index] = Number(choice);
-            console.log(arr_store_cell_numbs);
+            // console.log(arr_store_cell_numbs);
+            count = count +1;
+            console.log("count is now: " + parseInt(count));
             // var arr_make_tbl = $('#numbs_arr')[0].innerHTML;
             // var add_to_arr = JSON.parse(  arr_make_tbl)
             // add_to_arr[index] = Number(choice);
