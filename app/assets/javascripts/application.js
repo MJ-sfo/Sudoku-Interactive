@@ -15,8 +15,17 @@
 //= require_tree .
 console.log("js is showing")
 $( document ).on('turbolinks:load', function() {
+
+  // pulling DB info from rails to index page to here:
   var arr_store_cell_numbs = JSON.parse($( "#numbs_arr").text());
-  console.log("arr_store_cell_numbs is a: " + jQuery.type( arr_store_cell_numbs ));
+  // console.log("arr_store_cell_numbs is a: " + jQuery.type( arr_store_cell_numbs ));
+  var playing_level = Number(JSON.parse($( "#level_id").text()));
+  // console.log("playing_level is a: " + jQuery.type( playing_level ));
+  var puzzle_id = Number(JSON.parse($( "#puzzle").text()));
+
+  // info will need to send to db:
+  var count = 0;
+  var did_i_win = false;
 
   $('.box').one("click", function(event) {
     var id = event.target.id;

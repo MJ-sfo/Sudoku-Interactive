@@ -1,16 +1,22 @@
 class WelcomeController < ApplicationController
 
-    attr_reader :values
+    # attr_reader :values
     def index
       # string_starting_numbers = File.readlines("#{Rails.root}/config/sudoku_puzzles.txt")[0..8].sample
-      a = Puzzle.where(level:1)
+      @level = 1
+      a = Puzzle.where(level:@level)
       sample_object = a.sample
-      string_id = sample_object[:id]
+      @puzzle_id = sample_object[:id]
       string_starting_numbers = sample_object[:puzzle]
       @values = create_numbers(string_starting_numbers)[0..80]  # need [0..80] or adds 0 to end
       render('index')
       @integers = [1,2,3,4,5,6,7,8,9]
       # @cell_numb_arr = string_starting_numbers
+    end
+
+    def game_end_stats
+      # puts params
+      Attempt.create(game_stats_params)
     end
 
     def find_choices
@@ -95,5 +101,10 @@ class WelcomeController < ApplicationController
       new_arr
     end
 
+//
+private
+def game_stats_params
+  params.require(:attempt).permit(:id, :choices, :win)
+end
 
 end
