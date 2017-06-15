@@ -21,15 +21,18 @@ from app/assets/javascripts/application.js
     arr: arr_store_cell_numbs,
     index: index
   },
-  success: function(response) {```
+  success: function(response) {
+  ```
 
 this ajax call both sends information to a ruby function, and then retrieves response from ruby function from controller
 app/controllers/welcome_controller.rb
-```def find_choices
+```
+def find_choices
   interger_arr = params[:arr].map {|i| i.to_i if i >= "1" && i<= "9"}
   results_to_return = possible_numbers(interger_arr,params[:index].to_i)
   render json: results_to_return
-end  ```
+end  
+```
 This ruby function parses the incoming data, sends information to second function possible_numbers, and returns result to JQuery
 
 Future Features:
