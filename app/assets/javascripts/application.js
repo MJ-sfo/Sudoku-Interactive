@@ -31,6 +31,28 @@ $( document ).on('turbolinks:load', function() {
     index = Number(id.substring(5));
     // console.log(jQuery.type( index ))
     var menu_id = 'menu_' + parseInt(index)
+
+    // var replace_html = '<select id="menu_' + id + '" ' + 'class="' + 'drop_down_menu" style=' + '"display: none' + '"' + '><option disabled selected value>???</option></select>' ;
+    // $('#cell_'+ parseInt(index)).html() = replace_html;
+    // above causes error: Uncaught ReferenceError: Invalid left-hand side in assignment
+
+    // var remove_text = $('#cell_'+ parseInt(index));
+    // $('#cell_'+ parseInt(index)) = $(remove_text).html($(this).html().split("By:").join(""));
+
+    // $(remove_text).html($(this).html().split("By:").join(""));
+
+    // var remove_text = $('#cell_'+ parseInt(index)).text();
+    // remove_text.replace('choose','');
+    // $('#cell_'+ parseInt(index)).text(remove_text);
+
+    // $( '#cell_'+ parseInt(index) ).text(function ( i, txt ) {
+    //     return txt.replace( 'choose', '' );
+    // });
+    // above removes text 'choose', but no menue drop-down
+
+    var what_element = $('#cell_'+ parseInt(index)).html() ;
+    console.log("what_element is :");
+    console.log(what_element);
     $.ajax({
       url: "/welcome/find_choices",
       type: 'GET',

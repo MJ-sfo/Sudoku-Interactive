@@ -15,10 +15,12 @@
   <% counter = counter+1 %>
     <tr class="<%= 'row_' + counter.to_s %>">
   <% group.each_with_index do |value, index| %>
-        <td id="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" class = "box">
+        <td id="<%= 'cell_' + ((counter-1)*9 + index).to_s %>" class = "box"
           <% if value.is_a? Integer %>
+            style="background-color: PaleGreen  " >
             <%= value %>
            <% else %>
+            >
              choose
              <select id="<%= 'menu_' + ((counter-1)*9 + index).to_s %>" class="drop_down_menu" style="display: none">
              <option disabled selected value>???</option>
