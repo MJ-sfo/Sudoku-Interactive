@@ -50,9 +50,9 @@ $( document ).on('turbolinks:load', function() {
     // });
     // above removes text 'choose', but no menue drop-down
 
-    var what_element = $('#cell_'+ parseInt(index)).html() ;
-    console.log("what_element is :");
-    console.log(what_element);
+    // var what_element = $('#cell_'+ parseInt(index)).html() ;
+    // console.log("what_element is :");
+    // console.log(what_element);
     $.ajax({
       url: "/welcome/find_choices",
       type: 'GET',
@@ -72,7 +72,7 @@ $( document ).on('turbolinks:load', function() {
               puzzle_id: puzzle_id
             },
           });  //  $.ajax({
-          $(".final_statement").show().text("Sorry, end of possibilities.  Game over after " + parseInt(count) + " tries.");
+          $(".final_statement").show().text("Sorry, end of possibilities.  Game (level " + playing_level + ") over after " + parseInt(count) + " tries.");
         }  //  if (response.length
         else {
           response.forEach(function(item){
