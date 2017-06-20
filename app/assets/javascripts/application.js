@@ -18,7 +18,6 @@ $( document ).on('turbolinks:load', function() {
 
   // pulling DB info from rails to index page to here:
   var arr_store_cell_numbs = JSON.parse($( "#numbs_arr").text());
-  // console.log("arr_store_cell_numbs is a: " + jQuery.type( arr_store_cell_numbs ));
   var playing_level = Number(JSON.parse($( "#level_id").text()));
   var puzzle_id = Number(JSON.parse($( "#puzzle").text()));
 
@@ -30,8 +29,7 @@ $( document ).on('turbolinks:load', function() {
     var id = event.target.id;
     index = Number(id.substring(5));
     // console.log(jQuery.type( index ))
-    var menu_id = 'menu_' + parseInt(index)
-
+    var menu_id = 'menu_' + index;
     // var replace_html = '<select id="menu_' + id + '" ' + 'class="' + 'drop_down_menu" style=' + '"display: none' + '"' + '><option disabled selected value>???</option></select>' ;
     // $('#cell_'+ parseInt(index)).html() = replace_html;
     // above causes error: Uncaught ReferenceError: Invalid left-hand side in assignment
@@ -75,8 +73,13 @@ $( document ).on('turbolinks:load', function() {
           $(".final_statement").show().text("Sorry, end of possibilities.  Game (level " + playing_level + ") over after " + parseInt(count) + " tries.");
         }  //  if (response.length
         else {
+          // remove 'choose'
+          $("#cell_"+index)[0].firstChild.data = '';
           response.forEach(function(item){
             $('#' + menu_id).append($("<option></option>").attr("value", item).text(item));
+
+            // what if won game?
+            // if (arr_store_cell_numbs)
           })   //  response.forEach
         }
       },  //   success: function(
@@ -88,13 +91,11 @@ $( document ).on('turbolinks:load', function() {
     $(function() {
         $('#' + menu_id).change(function(resp) {
             var choice = $( "#" + menu_id + " option:selected" ).text();
-            console.log('menue has changed with ' + choice);
             // $('#' + numbs_arr)[index] = choice;
 
             arr_store_cell_numbs[index] = Number(choice);
             // console.log(arr_store_cell_numbs);
             count = count +1;
-            console.log("count is now: " + parseInt(count));
             // var arr_make_tbl = $('#numbs_arr')[0].innerHTML;
             // var add_to_arr = JSON.parse(  arr_make_tbl)
             // add_to_arr[index] = Number(choice);
